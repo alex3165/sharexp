@@ -7,7 +7,8 @@ newUser id =
   {
     id = id,
     firstName = "Eddy",
-    lastName = "Uh"
+    lastName = "Uh",
+    completed = True
   }
 
 increment: Int -> Int

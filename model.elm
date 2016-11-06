@@ -3,7 +3,8 @@ module Model exposing (..)
 type alias User = {
   id: Int,
   firstName: String,
-  lastName: String
+  lastName: String,
+  completed: Bool
 }
 
 type alias Model = {
@@ -16,11 +17,19 @@ model =
     users = [{
       id = 0,
       firstName = "Paul",
-      lastName = "Viscouri"
+      lastName = "Viscouri",
+      completed = True
     },
     {
       id = 1,
       firstName = "Jacque",
-      lastName = "Alt"
+      lastName = "Alt",
+      completed = True
+    },
+    {
+      id = 2,
+      firstName = "",
+      lastName = "",
+      completed = False
     }]
   }

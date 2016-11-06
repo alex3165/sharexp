@@ -2,10 +2,10 @@ module View exposing (..)
 
 import Messages exposing (Msg)
 import User.View exposing (user)
-import Html.Events exposing (onClick)
 import Html.Attributes exposing (..)
 import Html exposing (..)
 import Model exposing (..)
+import Editing exposing (editing)
 
 containerStyle = style
   [
@@ -14,11 +14,15 @@ containerStyle = style
     ("listStyleType", "none")
   ]
 
+mapFilterUsers = List.map user << List.filter (\user -> user.completed == True)
 
 view: Model -> Html (Msg Int)
 view model =
   div []
   [
-    ul [containerStyle] <| List.map user model.users,
-    button [onClick Messages.Append] [Html.text "Add new user"]
+    div []
+    [
+      editing model
+    ],
+    ul [containerStyle] <| mapFilterUsers model.users
   ]
