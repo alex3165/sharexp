@@ -27,7 +27,7 @@ update msg model =
         model | users = List.append model.users [(incrementNewUser (List.length model.users))]
       }
 
-    Messages.Noop ->
+    Messages.NoOp ->
       model
 
     Messages.Update input userId value ->

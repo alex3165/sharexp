@@ -1,7 +1,7 @@
 module Messages exposing (..)
 
 type Msg number =
-  Noop
+  NoOp
   | Append Int
   | Delete number
   | Update String Int String
