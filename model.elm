@@ -11,6 +11,15 @@ type alias Model = {
   users: List User
 }
 
+defaultUser: Int -> User
+defaultUser id =
+  {
+    id = id,
+    firstName = "",
+    lastName = "",
+    completed = False
+  }
+
 model: Model
 model =
   {

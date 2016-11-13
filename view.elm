@@ -14,15 +14,18 @@ containerStyle = style
     ("listStyleType", "none")
   ]
 
-mapFilterUsers = List.map user << List.filter (\user -> user.completed == True)
+increment: Int -> Int
+increment id = id + 1
+
+incrementNewUser = defaultUser << increment
+
+isCompleted = (\user -> user.completed == True)
+isIncomplete = (\user -> user.completed == False)
 
 view: Model -> Html (Msg Int)
 view model =
   div []
   [
-    div []
-    [
-      editing model
-    ],
-    ul [containerStyle] <| mapFilterUsers model.users
+    div [] <| List.map editing (List.filter isIncomplete model.users),
+    ul [containerStyle] <| List.map user (List.filter isCompleted model.users)
   ]
