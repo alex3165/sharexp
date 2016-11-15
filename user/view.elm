@@ -5,10 +5,10 @@ import Html exposing (..)
 import Html.Events exposing (onClick)
 import Model exposing (User)
 
-user: User -> Html (Msg Int)
+
+user : User -> Html (Msg Int)
 user u =
-  li []
-  [
-    div [] [text <| u.firstName ++ u.lastName],
-    div [onClick <| Messages.Delete u.id] [text "delete"]
-  ]
+    li []
+        [ div [] [ text <| u.firstName ++ u.lastName ]
+        , div [ onClick <| Messages.Delete u.id ] [ text "delete" ]
+        ]

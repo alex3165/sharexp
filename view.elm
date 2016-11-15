@@ -7,25 +7,35 @@ import Html exposing (..)
 import Model exposing (..)
 import Editing exposing (editing)
 
-containerStyle = style
-  [
-    ("margin", "0px"),
-    ("padding", "0px"),
-    ("listStyleType", "none")
-  ]
 
-increment: Int -> Int
-increment id = id + 1
+containerStyle =
+    style
+        [ ( "margin", "0px" )
+        , ( "padding", "0px" )
+        , ( "listStyleType", "none" )
+        ]
 
-incrementNewUser = defaultUser << increment
 
-isCompleted = (\user -> user.completed == True)
-isIncomplete = (\user -> user.completed == False)
+increment : Int -> Int
+increment id =
+    id + 1
 
-view: Model -> Html (Msg Int)
+
+incrementNewUser =
+    defaultUser << increment
+
+
+isCompleted =
+    (\user -> user.completed == True)
+
+
+isIncomplete =
+    (\user -> user.completed == False)
+
+
+view : Model -> Html (Msg Int)
 view model =
-  div []
-  [
-    div [] <| List.map editing (List.filter isIncomplete model.users),
-    ul [containerStyle] <| List.map user (List.filter isCompleted model.users)
-  ]
+    div []
+        [ div [] <| List.map editing (List.filter isIncomplete model.users)
+        , ul [ containerStyle ] <| List.map user (List.filter isCompleted model.users)
+        ]
