@@ -5,5 +5,6 @@ type Msg number
     = NoOp
     | Append Int
     | Delete number
-    | Update String Int String
+    | UpdateFirstName Int String
+    | UpdateLastName Int String
     | New

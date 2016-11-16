@@ -35,13 +35,24 @@ update msg model =
         Messages.NoOp ->
             model
 
-        Messages.Update input userId value ->
+        Messages.UpdateFirstName userId value ->
             let
                 updateUser user =
                     if user.id == userId then
                         { user
                             | firstName = value
-                            , lastName = value
+                        }
+                    else
+                        user
+            in
+                { model | users = List.map updateUser model.users }
+
+        Messages.UpdateLastName userId value ->
+            let
+                updateUser user =
+                    if user.id == userId then
+                        { user
+                            | lastName = value
                         }
                     else
                         user
