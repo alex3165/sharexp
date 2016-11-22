@@ -2,13 +2,15 @@ module Main exposing (..)
 
 import Html exposing (Html)
 import View exposing (view)
-import Model exposing (model)
+import Model exposing (..)
 import Update exposing (update)
+import Messages exposing (Msg)
 
 
 main =
-    Html.beginnerProgram
+    Html.program
         { view = view
-        , model = model
+        , init = init
         , update = update
+        , subscriptions = (always Sub.none)
         }

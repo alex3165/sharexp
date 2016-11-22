@@ -14,7 +14,7 @@ incrementNewUser =
     defaultUser << increment
 
 
-update : Msg Int -> Model -> Model
+update : Msg Int -> Model -> ( Model, Cmd (Msg Int) )
 update msg model =
     case msg of
         Messages.Append userId ->
@@ -24,16 +24,22 @@ update msg model =
                         { user | completed = True }
                     else
                         user
+
+                newModel =
+                    { model
+                        | users = List.append (List.map updateUser model.users) [ (incrementNewUser (List.length model.users)) ]
+                    }
             in
-                { model | users = List.map updateUser model.users }
+                ( newModel, Cmd.none )
 
         Messages.New ->
-            { model
-                | users = List.append model.users [ (incrementNewUser (List.length model.users)) ]
-            }
-
-        Messages.NoOp ->
-            model
+            let
+                newModel =
+                    { model
+                        | users = List.append model.users [ (incrementNewUser (List.length model.users)) ]
+                    }
+            in
+                ( newModel, Cmd.none )
 
         Messages.UpdateFirstName userId value ->
             let
@@ -44,8 +50,11 @@ update msg model =
                         }
                     else
                         user
+
+                newModel =
+                    { model | users = List.map updateUser model.users }
             in
-                { model | users = List.map updateUser model.users }
+                ( newModel, Cmd.none )
 
         Messages.UpdateLastName userId value ->
             let
@@ -56,10 +65,17 @@ update msg model =
                         }
                     else
                         user
+
+                newModel =
+                    { model | users = List.map updateUser model.users }
             in
-                { model | users = List.map updateUser model.users }
+                ( newModel, Cmd.none )
 
         Messages.Delete id ->
-            { model
-                | users = List.filter (\u -> u.id /= id) model.users
-            }
+            let
+                newModel =
+                    { model
+                        | users = List.filter (\u -> u.id /= id) model.users
+                    }
+            in
+                ( newModel, Cmd.none )
