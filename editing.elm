@@ -2,7 +2,7 @@ module Editing exposing (..)
 
 import Html exposing (..)
 import Messages exposing (Msg)
-import Model exposing (..)
+import User.Model exposing (..)
 import Html.Events exposing (onClick, onInput)
 import Html.Attributes exposing (..)
 

@@ -2,9 +2,11 @@ module View exposing (..)
 
 import Messages exposing (Msg)
 import User.View exposing (user)
+import Expense.Add exposing (add)
 import Html.Attributes exposing (..)
 import Html exposing (..)
 import Model exposing (..)
+import User.Model exposing (..)
 import Editing exposing (editing)
 
 
@@ -13,6 +15,28 @@ containerStyle =
         [ ( "margin", "0px" )
         , ( "padding", "0px" )
         , ( "listStyleType", "none" )
+        ]
+
+
+wrapperStyle =
+    style
+        [ ( "display", "flex" )
+        , ( "min-height", "100%" )
+        ]
+
+
+sidepanStyle =
+    style
+        [ ( "flex", "4" )
+        , ( "background-color", "#F9F9F9" )
+        , ( "padding", "20px" )
+        , ( "borderLeft", "1px solid #B9BCBC" )
+        ]
+
+
+contentStyle =
+    style
+        [ ( "flex", "8" )
         ]
 
 
@@ -35,7 +59,11 @@ isIncomplete =
 
 view : Model -> Html (Msg Int)
 view model =
-    div []
-        [ div [] <| List.map editing (List.filter isIncomplete model.users)
-        , ul [ containerStyle ] <| List.map user (List.filter isCompleted model.users)
+    div [ wrapperStyle ]
+        [ div [ contentStyle ]
+            [ div [] <| List.map editing (List.filter isIncomplete model.users)
+            , ul [ containerStyle ] <| List.map user (List.filter isCompleted model.users)
+            ]
+        , div [ sidepanStyle ]
+            [ add model.users ]
         ]

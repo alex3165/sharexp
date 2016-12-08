@@ -3,7 +3,7 @@ module User.View exposing (..)
 import Messages exposing (Msg)
 import Html exposing (..)
 import Html.Events exposing (onClick)
-import Model exposing (User)
+import User.Model exposing (User)
 
 
 user : User -> Html (Msg Int)

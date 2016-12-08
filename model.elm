@@ -1,52 +1,23 @@
 module Model exposing (..)
 
 import Messages exposing (Msg)
-
-
-type alias User =
-    { id : Int
-    , firstName : String
-    , lastName : String
-    , completed : Bool
-    }
+import User.Model exposing (..)
+import Expense.Model exposing (..)
 
 
 type alias Model =
-    { users : List User }
-
-
-defaultUser : Int -> User
-defaultUser id =
-    { id = id
-    , firstName = ""
-    , lastName = ""
-    , completed = False
+    { users : Users
+    , expenses : Expenses
     }
-
-
-initUsers =
-    [ { id = 0
-      , firstName = "Paul"
-      , lastName = "Viscouri"
-      , completed = True
-      }
-    , { id = 1
-      , firstName = "Jacque"
-      , lastName = "Alt"
-      , completed = True
-      }
-    , { id = 2
-      , firstName = ""
-      , lastName = ""
-      , completed = False
-      }
-    ]
 
 
 init : ( Model, Cmd (Msg Int) )
 init =
     let
-        model =
-            Model initUsers
+        users =
+            User.Model.initialState
+
+        expenses =
+            Expense.Model.initialState
     in
-        ( model, Cmd.none )
+        ( { users = users, expenses = expenses }, Cmd.none )

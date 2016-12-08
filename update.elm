@@ -1,5 +1,6 @@
 module Update exposing (update)
 
+import User.Model exposing (..)
 import Model exposing (..)
 import Messages exposing (..)
 import Debug exposing (log)
