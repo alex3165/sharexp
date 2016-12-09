@@ -2,7 +2,7 @@ module Update exposing (update)
 
 import User.Model exposing (..)
 import Model exposing (..)
-import Messages exposing (..)
+import User.Message exposing (..)
 import Debug exposing (log)
 
 
@@ -18,7 +18,7 @@ incrementNewUser =
 update : Msg Int -> Model -> ( Model, Cmd (Msg Int) )
 update msg model =
     case msg of
-        Messages.Append userId ->
+        Append userId ->
             let
                 updateUser user =
                     if user.id == userId then
@@ -33,7 +33,7 @@ update msg model =
             in
                 ( newModel, Cmd.none )
 
-        Messages.New ->
+        New ->
             let
                 newModel =
                     { model
@@ -42,7 +42,7 @@ update msg model =
             in
                 ( newModel, Cmd.none )
 
-        Messages.UpdateFirstName userId value ->
+        UpdateFirstName userId value ->
             let
                 updateUser user =
                     if user.id == userId then
@@ -57,7 +57,7 @@ update msg model =
             in
                 ( newModel, Cmd.none )
 
-        Messages.UpdateLastName userId value ->
+        UpdateLastName userId value ->
             let
                 updateUser user =
                     if user.id == userId then
@@ -72,7 +72,7 @@ update msg model =
             in
                 ( newModel, Cmd.none )
 
-        Messages.Delete id ->
+        Delete id ->
             let
                 newModel =
                     { model

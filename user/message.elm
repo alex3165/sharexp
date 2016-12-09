@@ -1,4 +1,4 @@
-module Messages exposing (..)
+module User.Message exposing (..)
 
 
 type Msg number

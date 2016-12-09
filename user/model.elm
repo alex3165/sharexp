@@ -1,6 +1,6 @@
 module User.Model exposing (..)
 
-import Messages exposing (Msg)
+import User.Message exposing (Msg)
 
 
 type alias User =

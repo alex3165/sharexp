@@ -1,12 +1,14 @@
 module Expense.Add exposing (..)
 
-import Messages exposing (Msg)
+--import Messages exposing (Msg)
+
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import User.Model exposing (..)
+import Expense.Message exposing (Msg)
 
 
-checkbox : User -> Html (Msg Int)
+checkbox : User -> Html msg
 checkbox user =
     label
         []
@@ -15,7 +17,7 @@ checkbox user =
         ]
 
 
-add : Users -> Html (Msg Int)
+add : Users -> Html msg
 add users =
     div []
         [ input [] []

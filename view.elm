@@ -1,6 +1,6 @@
 module View exposing (..)
 
-import Messages exposing (Msg)
+import User.Message exposing (Msg)
 import User.View exposing (user)
 import Expense.Add exposing (add)
 import Html.Attributes exposing (..)
@@ -65,5 +65,5 @@ view model =
             , ul [ containerStyle ] <| List.map user (List.filter isCompleted model.users)
             ]
         , div [ sidepanStyle ]
-            [ add model.users ]
+            [ add (List.filter isCompleted model.users) ]
         ]

@@ -1,6 +1,6 @@
 module Model exposing (..)
 
-import Messages exposing (Msg)
+import User.Message exposing (Msg)
 import User.Model exposing (..)
 import Expense.Model exposing (..)
 

@@ -4,7 +4,6 @@ import Html exposing (Html)
 import View exposing (view)
 import Model exposing (..)
 import Update exposing (update)
-import Messages exposing (Msg)
 
 
 main =
